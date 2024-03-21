@@ -22,7 +22,7 @@ def main():
     # Botón en la barra lateral para instrucciones de marcadores
     add_bookmark()
     
-    url_video = st.text_input("Ingresa la URL del video (Soporte para YouTube, Twitter, Facebook):")
+    url_video = st.text_input("Ingresa la URL del video (Soporte para YouTube, Twitter, Facebook, Instagram):")
     
     if st.button("Analizar"):
         if url_video:
