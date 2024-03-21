@@ -4,11 +4,11 @@ import shlex
 
 # Función para obtener el enlace de descarga usando yt-dlp
 def obtener_enlace_descarga(url_video):
-    comando = f"yt-dlp -f best -g {url_video}"
+    comando = f"yt-dlp -f b -g {url_video}"
     proceso = subprocess.run(shlex.split(comando), stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     
     if proceso.returncode == 0:
-        enlace = proceso.stdout.strip()
+        enlace = proceso.stdout.strip()  # Retorna el enlace de descarga
         return enlace
     else:
         st.error("Error al obtener el enlace de descarga: " + proceso.stderr)
