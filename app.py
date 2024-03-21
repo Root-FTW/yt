@@ -18,14 +18,11 @@ def add_bookmark():
     st.sidebar.markdown("Para añadir esta página a tus marcadores, presiona `Ctrl+D` en Windows/Linux o `Cmd+D` en macOS.")
 
 def main():
-    st.title("BuscaLink")
-    st.header("Descarga tu video favorito")
-    st.subheader("Soporte para YouTube, Twitter, Facebook:")
-    
+    st.title("BuscaLink")    
     # Botón en la barra lateral para instrucciones de marcadores
     add_bookmark()
     
-    url_video = st.text_input("Ingresa la URL del video:")
+    url_video = st.text_input("Ingresa la URL del video (Soporte para YouTube, Twitter, Facebook):")
     
     if st.button("Analizar"):
         if url_video:
