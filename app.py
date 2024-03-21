@@ -39,10 +39,12 @@ def main():
         bottom: 0;
         width: 100%;
         text-align: center;
+        font-size: 12px; /* Tamaño de la fuente más pequeño */
+        color: grey; /* Color de la fuente en gris */
     }
     </style>
     <div class="footer">
-    <p>Made with ❤️ by [Jonathan Paz](https://www.linkedin.com/in/jonathanftw/)</p>
+    <p>Made with ❤️ by <a href='https://www.linkedin.com/in/jonathanftw/' style='color: grey;'>Jonathan Paz</a></p>
     </div>
     """, unsafe_allow_html=True)
 
