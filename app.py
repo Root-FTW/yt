@@ -16,7 +16,7 @@ def obtener_enlace_descarga(url_video):
 
 def main():
     st.title("BuscaLink")    
-    url_video = st.text_input("Ingresa la URL del video (Soporte para YouTube, Twitter, Facebook:):")
+    url_video = st.text_input("Ingresa la URL del video (Soporte para YouTube, Twitter, Facebook):")
     
     if st.button("Analizar"):
         if url_video:
