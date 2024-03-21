@@ -17,9 +17,11 @@ def obtener_enlace_descarga(url_video):
 
 # Interfaz de usuario de Streamlit
 def main():
-    st.title("Obtener enlace de descarga de YouTube")
-    
-    url_video = st.text_input("Ingresa la URL del video de YouTube:")
+    st.title("BuscaLink")
+    st.header("Descarga tu video favorito")
+    st.subheader("Soporte para YouTube, Twitter, Facebook:")
+
+    url_video = st.text_input("Ingresa la URL del video:")
     
     # Botón "Analizar"
     if st.button("Analizar"):
