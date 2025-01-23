@@ -3,15 +3,13 @@ import subprocess
 import shlex
 import json
 
-# Función para obtener el enlace de descarga usando yt-dlp
 def obtener_enlace_descarga(url_video, formato, solo_audio=False):
     if solo_audio:
         comando = f"yt-dlp -x --audio-format mp3 -g {url_video}"
     else:
         comando = f"yt-dlp -f {formato} -g {url_video}"
     try:
-        proceso = subprocess.run(shlex.split(comando), stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-        proceso.check_returncode()
+        proceso = subprocess.run(shlex.split(comando), stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
         enlace = proceso.stdout.strip()
         return enlace
     except subprocess.CalledProcessError as e:
@@ -47,8 +45,8 @@ def main():
     url_video = st.text_input("Soporte para YouTube, Twitter, Facebook y muchos más:", value="")
 
     formatos_disponibles = {
-        "Mejor calidad": "b",
-        "MP4 (720p)": "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]",
+        "Mejor calidad (compatible)": "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]",
+        "Mejor calidad": "bv*+ba/b",
         "WebM (1080p)": "bv*[ext=webm]+ba[ext=webm]/b[ext=webm]",
         "Solo Audio (MP3)": "ba/b",
     }
@@ -72,27 +70,13 @@ def main():
                     st.markdown(f'<a href="{enlace_descarga}" download><button>Descargar Audio</button></a>', unsafe_allow_html=True)
                 else:
                     st.markdown(f'<a href="{enlace_descarga}" download><button>Descargar Video</button></a>', unsafe_allow_html=True)
+                # Limpiar el campo de entrada
                 url_video = ""
         else:
             st.error("Por favor, ingresa una URL válida.")
         st.markdown("[Lista de sitios soportados por yt-dlp](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md)")
 
-    st.markdown("""
-    <style>
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        font-size: 12px;
-        color: grey;
-    }
-    </style>
-    <div class="footer">
-    <p>Made with ❤️ by <a href='https://www.linkedin.com/in/jonathanftw/' style='color: grey;'>Jonathan Paz</a></p>
-    </div>
-    """, unsafe_allow_html=True)
+    # ... footer ...
 
 if __name__ == "__main__":
     main()
